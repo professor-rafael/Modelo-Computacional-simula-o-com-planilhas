@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Controle de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cyber-container shine-effect">
+        <div class="cyber-header">
+            <h1 class="glitch-effect" data-text="TechStore Inventory">TechStore - Controle de Estoque</h1>
+        </div>
+
+        <div class="toolbar">
+            <button class="cyber-button">
+                <span class="btn-text">Adicionar Produto</span>
+                <span class="btn-icon">+</span>
+            </button>
+            <button class="cyber-button">
+                <span class="btn-text">Exportar Dados</span>
+                <span class="btn-icon">⇩</span>
+            </button>
+            <div class="search-box">
+                <input type="text" placeholder="Pesquisar produto...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <table class="spreadsheet">
+            <thead>
+                <tr>
+                    <th class="corner-cell">ID</th>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Marca</th>
+                    <th>Preço (R$)</th>
+                    <th>Estoque</th>
+                    <th>Status</th>
+                    <th>Vendidos</th>
+                    <th>Última Entrada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TS-1001</td>
+                    <td>Notebook Gamer Predator</td>
+                    <td>Notebooks</td>
+                    <td>Acer</td>
+                    <td>8.499,00</td>
+                    <td>5</td>
+                    <td class="status-high">Disponível</td>
+                    <td>12</td>
+                    <td>15/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1002</td>
+                    <td>Mouse Logitech MX Master 3</td>
+                    <td>Periféricos</td>
+                    <td>Logitech</td>
+                    <td>799,00</td>
+                    <td>8</td>
+                    <td class="status-high">Disponível</td>
+                    <td>22</td>
+                    <td>10/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1003</td>
+                    <td>SSD Kingston 1TB NVMe</td>
+                    <td>Armazenamento</td>
+                    <td>Kingston</td>
+                    <td>429,90</td>
+                    <td>0</td>
+                    <td class="status-low">Esgotado</td>
+                    <td>35</td>
+                    <td>05/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1004</td>
+                    <td>Teclado Mecânico Redragon</td>
+                    <td>Periféricos</td>
+                    <td>Redragon</td>
+                    <td>399,90</td>
+                    <td>3</td>
+                    <td class="status-medium">Últimas Unidades</td>
+                    <td>18</td>
+                    <td>08/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1005</td>
+                    <td>Monitor Samsung 27" 4K</td>
+                    <td>Monitores</td>
+                    <td>Samsung</td>
+                    <td>2.199,00</td>
+                    <td>2</td>
+                    <td class="status-medium">Últimas Unidades</td>
+                    <td>7</td>
+                    <td>12/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1006</td>
+                    <td>Placa de Vídeo RTX 3080</td>
+                    <td>Componentes</td>
+                    <td>NVIDIA</td>
+                    <td>5.999,00</td>
+                    <td>1</td>
+                    <td class="status-low">Esgotando</td>
+                    <td>9</td>
+                    <td>14/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1007</td>
+                    <td>Roteador TP-Link Archer</td>
+                    <td>Redes</td>
+                    <td>TP-Link</td>
+                    <td>599,00</td>
+                    <td>10</td>
+                    <td class="status-high">Disponível</td>
+                    <td>15</td>
+                    <td>09/11/2023</td>
+                </tr>
+                <tr>
+                    <td>TS-1008</td>
+                    <td>Webcam Logitech C920</td>
+                    <td>Acessórios</td>
+                    <td>Logitech</td>
+                    <td>699,00</td>
+                    <td>4</td>
+                    <td class="status-high">Disponível</td>
+                    <td>11</td>
+                    <td>13/11/2023</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="cyber-footer">
+            <div class="footer-info">
+                <span class="info-item">Total de Produtos: <strong>48</strong></span>
+                <span class="info-item">Valor Total em Estoque: <strong>R$ 142.759,20</strong></span>
+                <span class="info-item">Itens com Baixo Estoque: <strong class="warning">3</strong></span>
+            </div>
+            <div class="system-info">
+                TechStore Inventory System v2.4.1 | Última atualização: <span id="current-date"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Atualiza a data atual
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR');
+        
+        // Adiciona efeito de clique nas linhas
+        document.querySelectorAll('.spreadsheet tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.toggle('selected');
+            });
+        });
+    </script>
+</body>
+</html>
